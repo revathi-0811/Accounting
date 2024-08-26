@@ -1,27 +1,49 @@
 namespace com.revathi.gst;
 using {managed,cuid} from '@sap/cds/common';
 
-entity AccountingDocument :cuid,managed {
-   key ID:UUID;
-    CompanyCode : String(4);
-    FiscalYear:String(4);
-    FiscalPeriod:String(3);
-    AccountingDocument:String(10);
+entity Accounting : cuid, managed {
+    key ID : UUID;
+
+    @title: 'CompanyCode'
+    CompanyCode : String(20);
+
+    @title: 'FiscalYear'
+    FiscalYear : String(4);
+
+    @title: 'FiscalPeriod'
+    FiscalPeriod : String(3);
+
+    @title: 'AccountingDocument'
+    AccountingDocument : String(15);
+
+    @title: 'AccountingDocumentType'
+    AccountingDocumentType : String(15);
    
-    AccountingDocumentType:String(2); 
-    AccountingDocumentItems :Composition of  many AccountingDocumentItems on AccountingDocumentItems.AccountingDocument=$self.AccountingDocument and AccountingDocumentItems.CompanyCode = $self.CompanyCode 
-                                            and AccountingDocumentItems.FiscalYear = $self.FiscalYear;
+    @title: 'Lastchange'
+    LastChangeDate: DateTime;
+    
+
+    // Define the composition relationship with Items
+    Items : Composition of many Items on Items.AccountingDocument = $self.AccountingDocument;
 }
 
-entity AccountingDocumentItems : cuid,managed {
-    key ID:UUID;
-    
-     CompanyCode : String(4);
-    FiscalYear:String(4);
-    AccountingDocument:String(10);
-    AccountingDocumentItem : String(10);
-   TaxCode:String(2);
-   GLAccount:String(10);
-   TransactionTypeDetermination:String(3);
-   
+
+// Define the Items entity
+entity Items : cuid, managed {
+    key ID : UUID;
+    @title : 'CompanyCode'
+    CompanyCode: String(10);
+    @title: 'FiscalYear'
+    FiscalYear: String(4);
+    @title: 'AccountingDocument'
+    AccountingDocument: String(10);
+    @title: 'Accounting Document Item'
+    AccountingDocumentItem: String(4);
+    @title: 'GL Account'
+    GLAccount: String(10);
+    @title: 'Tax Code'
+    TaxCode: String(5);
+    @title: 'GST Amount in INR'
+    AmountInTransactionCurrency : Decimal(15,2);
+
 }

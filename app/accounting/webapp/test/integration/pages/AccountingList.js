@@ -9,8 +9,8 @@ sap.ui.define(['sap/fe/test/ListReport'], function(ListReport) {
     return new ListReport(
         {
             appId: 'accounting',
-            componentId: 'AccountingDocumentItemsList',
-            contextPath: '/AccountingDocumentItems'
+            componentId: 'AccountingList',
+            contextPath: '/Accounting'
         },
         CustomPageDefinitions
     );

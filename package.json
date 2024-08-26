@@ -47,6 +47,9 @@
     }
   },
   "sapux": [
+    "app/accounting",
+    "app/accounting",
+    "app/accounting",
     "app/accounting"
   ]
 }

@@ -2,10 +2,11 @@ sap.ui.require(
     [
         'sap/fe/test/JourneyRunner',
         'accounting/test/integration/FirstJourney',
-		'accounting/test/integration/pages/AccountingDocumentItemsList',
-		'accounting/test/integration/pages/AccountingDocumentItemsObjectPage'
+		'accounting/test/integration/pages/AccountingList',
+		'accounting/test/integration/pages/AccountingObjectPage',
+		'accounting/test/integration/pages/ItemsObjectPage'
     ],
-    function(JourneyRunner, opaJourney, AccountingDocumentItemsList, AccountingDocumentItemsObjectPage) {
+    function(JourneyRunner, opaJourney, AccountingList, AccountingObjectPage, ItemsObjectPage) {
         'use strict';
         var JourneyRunner = new JourneyRunner({
             // start index.html in web folder
@@ -16,8 +17,9 @@ sap.ui.require(
         JourneyRunner.run(
             {
                 pages: { 
-					onTheAccountingDocumentItemsList: AccountingDocumentItemsList,
-					onTheAccountingDocumentItemsObjectPage: AccountingDocumentItemsObjectPage
+					onTheAccountingList: AccountingList,
+					onTheAccountingObjectPage: AccountingObjectPage,
+					onTheItemsObjectPage: ItemsObjectPage
                 }
             },
             opaJourney.run

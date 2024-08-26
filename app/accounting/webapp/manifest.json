@@ -13,11 +13,11 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.14.2",
-      "toolsId": "c466dfdf-2d26-4400-a19a-849cc9fc0e5e"
+      "toolsId": "ba75e50b-7b50-493f-9659-91e16f7a877c"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/accounting-document/",
+        "uri": "/odata/v4/accountsrv/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -45,7 +45,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.127.0",
+      "minUI5Version": "1.127.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -86,28 +86,33 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "AccountingDocumentItemsList",
-          "target": "AccountingDocumentItemsList"
+          "name": "AccountingList",
+          "target": "AccountingList"
         },
         {
-          "pattern": "AccountingDocumentItems({key}):?query:",
-          "name": "AccountingDocumentItemsObjectPage",
-          "target": "AccountingDocumentItemsObjectPage"
+          "pattern": "Accounting({key}):?query:",
+          "name": "AccountingObjectPage",
+          "target": "AccountingObjectPage"
+        },
+        {
+          "pattern": "Accounting({key})/Items({key2}):?query:",
+          "name": "ItemsObjectPage",
+          "target": "ItemsObjectPage"
         }
       ],
       "targets": {
-        "AccountingDocumentItemsList": {
+        "AccountingList": {
           "type": "Component",
-          "id": "AccountingDocumentItemsList",
+          "id": "AccountingList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/AccountingDocumentItems",
+              "contextPath": "/Accounting",
               "variantManagement": "Page",
               "navigation": {
-                "AccountingDocumentItems": {
+                "Accounting": {
                   "detail": {
-                    "route": "AccountingDocumentItemsObjectPage"
+                    "route": "AccountingObjectPage"
                   }
                 }
               },
@@ -117,12 +122,12 @@
                     "type": "ResponsiveTable"
                   },
                   "actions": {
-                    "accounting": {
-                      "press": "accounting.ext.accounting.accounting.onButtonClick",
+                    "fetch": {
+                      "press": "accounting.ext.fetch.fetch.fetch",
                       "visible": true,
                       "enabled": true,
                       "requiresSelection": false,
-                      "text": "Records"
+                      "text": "fetch"
                     }
                   }
                 }
@@ -130,14 +135,32 @@
             }
           }
         },
-        "AccountingDocumentItemsObjectPage": {
+        "AccountingObjectPage": {
           "type": "Component",
-          "id": "AccountingDocumentItemsObjectPage",
+          "id": "AccountingObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/AccountingDocumentItems"
+              "contextPath": "/Accounting",
+              "navigation": {
+                "Items": {
+                  "detail": {
+                    "route": "ItemsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ItemsObjectPage": {
+          "type": "Component",
+          "id": "ItemsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Accounting/Items"
             }
           }
         }

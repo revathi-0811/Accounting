@@ -10,7 +10,7 @@ sap.ui.define([
             opaTest("Start application", function (Given, When, Then) {
                 Given.iStartMyApp();
 
-                Then.onTheAccountingDocumentItemsList.iSeeThisPage();
+                Then.onTheAccountingList.iSeeThisPage();
 
             });
 
@@ -18,12 +18,12 @@ sap.ui.define([
             opaTest("Navigate to ObjectPage", function (Given, When, Then) {
                 // Note: this test will fail if the ListReport page doesn't show any data
                 
-                When.onTheAccountingDocumentItemsList.onFilterBar().iExecuteSearch();
+                When.onTheAccountingList.onFilterBar().iExecuteSearch();
                 
-                Then.onTheAccountingDocumentItemsList.onTable().iCheckRows();
+                Then.onTheAccountingList.onTable().iCheckRows();
 
-                When.onTheAccountingDocumentItemsList.onTable().iPressRow(0);
-                Then.onTheAccountingDocumentItemsObjectPage.iSeeThisPage();
+                When.onTheAccountingList.onTable().iPressRow(0);
+                Then.onTheAccountingObjectPage.iSeeThisPage();
 
             });
 

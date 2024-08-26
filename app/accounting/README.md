@@ -1,22 +1,23 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Mon Aug 19 2024 15:53:12 GMT+0530 (India Standard Time)|
+|**Generation Date and Time**<br>Mon Aug 26 2024 13:58:57 GMT+0530 (India Standard Time)|
 |**App Generator**<br>@sap/generator-fiori-elements|
 |**App Generator Version**<br>1.14.2|
 |**Generation Platform**<br>Visual Studio Code|
 |**Template Used**<br>List Report Page V4|
 |**Service Type**<br>Local Cap|
-|**Service URL**<br>http://localhost:4004/odata/v4/accounting-document/|
+|**Service URL**<br>http://localhost:4004/odata/v4/accountsrv/|
 |**Module Name**<br>accounting|
-|**Application Title**<br>accounting|
+|**Application Title**<br>App Title|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon|
-|**UI5 Version**<br>1.127.0|
+|**UI5 Version**<br>1.127.1|
 |**Enable Code Assist Libraries**<br>False|
 |**Enable TypeScript**<br>False|
 |**Add Eslint configuration**<br>False|
-|**Main Entity**<br>AccountingDocumentItems|
+|**Main Entity**<br>Accounting|
+|**Navigation Entity**<br>Items|
 
 ## accounting
 
